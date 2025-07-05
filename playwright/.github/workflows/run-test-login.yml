@@ -1,0 +1,34 @@
+name: Run Playwright Java Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Install Node.js (for Playwright browsers)
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install Playwright CLI and browsers
+      run: |
+        npm install -g playwright
+        playwright install
+
+    - name: Run Maven Tests
+      run: mvn clean test

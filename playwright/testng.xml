@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="AllTestsSuite">
+    <test name="AllTests">
+        <classes>
+            <class name="APIAuto.SampleAPITest"/>
+            <class name="Login.LoginTest"/>
+            <class name="playwright.demoClass"/>
+            <class name="playwright.Sorting"/>
+        </classes>
+    </test>
+</suite>
