@@ -17,28 +17,6 @@ This starter pack gives you:
 - A **solid base** to build on
 - A **clean structure** any team can maintain
 
-## 📂 Project Structure
-playwright/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── playwright/
-│   │   │       ├── LaunchBrowser.java
-│   │   │       └── TestUtil.java
-│   │   └── resources/
-│   │       └── config/config.properties
-│   ├── test/
-│   │   └── java/
-│   │       ├── Login/
-│   │       │   ├── LoginPage.java
-│   │       │   ├── LoginTest.java
-│   │       │   └── LoginConstants.java
-│   │       └── playwright/
-│   │           └── Sorting.java
-├── pom.xml
-├── target/
-├── test-output/
-
 ## 🔧 Tech Stack
 | Tool        | Purpose                  |
 |-------------|--------------------------|
