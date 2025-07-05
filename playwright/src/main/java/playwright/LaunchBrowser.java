@@ -13,12 +13,8 @@ public class LaunchBrowser {
 	public static Browser browser;
 	public static BrowserContext context;
 	public static Page page;
-	public static Properties prop;
-	public static final Logger logger = Logger.getLogger("");
-
-//    public static final String URL = "https://practicetestautomation.com/";
-
-	public static final String URL = "https://practicetestautomation.com/";
+	public static final Logger logger = Logger.getLogger(""); // Initialize logger first
+	public static Properties prop = initConfig(); // Now call initConfig()
 
 	public static Page initBrowser() {
 		logger.info("Initializing Playwright and launching browser");
@@ -28,7 +24,6 @@ public class LaunchBrowser {
 
 		context = browser.newContext();
 		page = context.newPage();
-		prop = initConfig();
 		if (prop != null) {
 			logger.info("Navigating to URL from config: " + prop.getProperty("url"));
 			page.navigate(prop.getProperty("url"));
@@ -36,7 +31,7 @@ public class LaunchBrowser {
 			logger.severe("Properties not loaded. Skipping navigation.");
 			System.err.println("Properties not loaded. Skipping navigation.");
 		}
-		page.navigate(URL);
+		page.navigate(prop.getProperty("url"));
 		return page;
 	}
 
