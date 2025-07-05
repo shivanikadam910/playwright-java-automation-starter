@@ -1,8 +1,10 @@
-package playwright;
+package test.java.playwright;
 
 import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Page;
+
+import main.java.playwright.LaunchBrowser;
 
 public class demoClass {
 	public Page page;
