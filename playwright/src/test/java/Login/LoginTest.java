@@ -1,4 +1,4 @@
-package test.java.login;
+package Login;
 
 import org.testng.Assert;
 import org.testng.annotations.*;

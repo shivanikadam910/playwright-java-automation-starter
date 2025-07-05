@@ -1,4 +1,4 @@
-package test.java.login;
+package Login;
 
 import com.microsoft.playwright.Page;
 

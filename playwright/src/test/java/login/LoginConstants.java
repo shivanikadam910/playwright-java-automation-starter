@@ -1,6 +1,6 @@
-package test.java.login;
+package Login;
 
-import main.java.playwright.LaunchBrowser;
+import playwright.LaunchBrowser;
 
 public class LoginConstants  extends LaunchBrowser {
 
