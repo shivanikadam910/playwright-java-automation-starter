@@ -1,25 +1,64 @@
 package playwright;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 import com.microsoft.playwright.*;
 
 public class LaunchBrowser {
-	public Page page;
-	public Page initBrowser() {
-		// Initialize Playwright
-		try (Playwright playwright = Playwright.create()) {
+    public static Playwright playwright;
+    public static Browser browser;
+    public static BrowserContext context;
+    public static Page page;
+    public static Properties prop;
+    public static final Logger logger = Logger.getLogger("");
 
-			// Launch a browser (e.g., Chromium)
-			Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false)); 
-			// Create a new browser context (acts like a fresh profile)
-			BrowserContext context = browser.newContext();
+//    public static final String URL = "https://practicetestautomation.com/";
 
-			// Open a new page
-			page = context.newPage();
+    public static Page initBrowser() {
+        logger.info("Initializing Playwright and launching browser");
+        playwright = Playwright.create();
 
-			// Navigate to a URL
-			page.navigate("https://www.saucedemo.com/");
-		}
-		return page;
-	}
+        browser = playwright.chromium().launch(
+                new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome")
+        );
 
+        context = browser.newContext();
+        page = context.newPage();
+        prop = initConfig();
+        if (prop != null) {
+            logger.info("Navigating to URL from config: " + prop.getProperty("url"));
+            page.navigate(prop.getProperty("url"));
+        } else {
+            logger.severe("Properties not loaded. Skipping navigation.");
+            System.err.println("Properties not loaded. Skipping navigation.");
+        }
+        return page;
+    }
+
+    public static void terminateBrowser() {
+        if (context != null) context.close();
+        if (browser != null) browser.close();
+        if (playwright != null) playwright.close();
+    }
+
+    public static Properties initConfig() {
+        prop = new Properties();
+        try (InputStream input = LaunchBrowser.class.getClassLoader().getResourceAsStream("config/config.properties")) {
+            if (input == null) {
+                logger.severe("Unable to find config/config.properties");
+                System.err.println("Unable to find config/config.properties");
+                return null;
+            }
+            prop.load(input);
+            logger.info("Config properties loaded successfully");
+        } catch (IOException e) {
+            logger.severe("IOException while loading config: " + e.getMessage());
+            System.err.println("IOException while loading config: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return prop;
+    }   
+   
 }

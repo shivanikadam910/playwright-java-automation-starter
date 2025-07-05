@@ -1,7 +1,5 @@
 package playwright;
-
 import org.testng.annotations.Test;
-
 import com.microsoft.playwright.Page;
 
 public class demoClass {
