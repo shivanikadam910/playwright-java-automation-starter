@@ -1,0 +1,55 @@
+# Ignore node modules (for Node.js projects)
+node_modules/
+
+# Ignore Java class files
+*.class
+
+# Ignore logs
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.metadata/
+.git/
+.idea/
+*.iml
+
+# Ignore environment variables
+.env
+
+# Ignore Eclipse project files
+.classpath
+.project
+.settings/
+
+# Ignore Maven/Gradle build directories
+target/
+build/
+test-output/
+
+# Ignore compiled class files
+*.class
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
+
+# Ignore IntelliJ IDEA project files (in case you open the same project in IntelliJ)
+.idea/
+*.iml
+
